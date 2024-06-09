@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../Static/logo.png" type="image/x-icon">
+    <title>Linear Aces</title>
+    <style>
+        body {
+            font-family: 'Barlow', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        .header {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box; /* Ensure padding is included in element's total width */
+        }
+
+        .logo img {
+            width: 80px;
+            height: auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            margin-left: 20px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 4px 0;
+        }
+
+        .center-content {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .center-content h1 {
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .search-container input {
+            padding: 10px 20px;
+            width: calc(100% - 50px);
+            max-width: 500px;
+            border: 1px solid #ddd;
+            border-radius: 25px 0 0 25px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-left: 0;
+            background-color: #e0f7fa;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            box-sizing: border-box; /* Ensure padding is included in element's total width */
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card p, .card ul {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .card ul {
+            padding-left: 20px;
+        }
+
+        .card ul li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #e0f7fa;
+                width: 200px;
+                border: 1px solid #ddd;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                z-index: 1;
+            }
+
+            .nav a {
+                margin: 10px 0;
+                text-align: left;
+                padding: 10px;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nav {
+                display: flex !important;
+                position: static;
+                box-shadow: none;
+            }
+
+            .hamburger {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                width: 60px;
+            }
+
+            .search-container input {
+                width: 100%;
+                border-radius: 25px;
+                margin-bottom: 10px;
+            }
+
+            .search-container button {
+                width: 100%;
+                border-radius: 25px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="../Static/logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="hamburger" onclick="toggleNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav" id="navMenu">
+            <a href="../Template/flashcard.html">START</a>
+            <a href="about.html">ABOUT</a>
+            <a href="#">ASSIST</a>
+            <a href="FAQ.html">FAQ</a>
+        </div>
+    </div>
+    <div class="center-content">
+        <h1>We’re here to help</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="filterCards()" placeholder="Search">
+            <button onclick="filterCards()">🔍</button>
+        </div>
+        <div class="cards-container" id="cardsContainer">
+            <div class="card">
+                <h2>Step 1: Access the Homepage</h2>
+                <p>Homepage Layout: On the homepage, you'll see a hamburger menu on the right, the website logo on the left, and a "Start" button in the center.</p>
+            </div>
+            <div class="card">
+                <h2>Step 2: Explore the Hamburger Menu</h2>
+                <p>Open the Menu: Click on the hamburger menu icon on the right side of the homepage.</p>
+                <p>Menu Options: The menu contains the following options:</p>
+                <ul>
+                    <li><b>About</b>: Learn more about the creator, their background, and personal details.</li>
+                    <li><b>Assist</b>: Get help on how to use the website.</li>
+                    <li><b>FAQ</b>: Find answers to frequently asked questions.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>Step 3: Start Using the Flashcards</h2>
+                <p>Begin Flashcards: Click the "Start" button in the center of the homepage to begin using the flashcards.</p>
+            </div>
+            <div class="card">
+                <h2>Step 4: Navigate Through Flashcards</h2>
+                <p>Flashcard Layout: Once you start, you’ll see a flashcard with a question on the front.</p>
+                <ul>
+                    <li><b>Next Card</b>: Click the "Next" button to move to the next flashcard.</li>
+                    <li><b>Previous Card</b>: Click the "Previous" button to go back to the previous flashcard.</li>
+                    <li><b>Flip Card</b>: Click the "Flip Card" button to see the answer on the back of the card.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>Step 5: Return to Homepage</h2>
+                <p>Click the Logo: At any time, you can click on the website logo on the left side of the screen to return to the homepage.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function filterCards() {
+            const searchInput = document.getElementById('searchInput');
+            const filter = searchInput.value.toLowerCase();
+            const cardsContainer = document.getElementById('cardsContainer');
+            const cards = cardsContainer.getElementsByClassName('card');
+
+            for (let i = 0; i < cards.length; i++) {
+                const card = cards[i];
+                const text = card.textContent || card.innerText;
+                if (text.toLowerCase().indexOf(filter) > -1) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            }
+        }
+
+        function toggleNav() {
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu.style.display === "flex") {
+                navMenu.style.display = "none";
+            } else {
+                navMenu.style.display = "flex";
+            }
+        }
+
+        window.addEventListener('resize', function() {
+            const navMenu = document.getElementById('navMenu');
+            if (window.innerWidth > 768) {
+                navMenu.style.display = "flex";
+            } else {
+                navMenu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

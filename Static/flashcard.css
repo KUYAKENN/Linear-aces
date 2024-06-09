@@ -1,0 +1,555 @@
+
+/*Color Pallete*/
+/* #681F0A #8F3A00 #C8921F #7F6552 #8E8070 #B3B4A8 
+RGB(104, 31, 10) RGB(143, 58, 0) RGB(200, 146, 31) RGB(127, 101, 82) RGB(142, 128, 112) RGB(179, 180, 168)*/
+
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: linear-gradient(to bottom right, #262421, black, #262421, black, #262421);
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: hidden;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background: linear-gradient(to left, #800080, white);
+    box-sizing: border-box;
+}
+
+.logo img {
+    display: block;
+    border: 4px solid #800080;
+    border-radius: 5px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/******************************************************************************************************************************/
+/* CSS for Hamburger Menu */
+.hamburger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.hamburger div {
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #363636;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 2;
+    overflow: hidden; /*disable scrolling*/
+}
+
+#toggle:checked ~ .nav {
+    transform: translateX(0);
+}
+
+.nav-wrapper {
+    padding: 20px;
+}
+.nav-wrapper_flipcard {
+    padding: 50px;
+}
+.nav-wrapper_flipcard a {
+    display: block;
+    
+    margin-bottom: 15px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    margin-top: 20px;
+    transition: color 0.2s ease-in-out;
+    font-weight: bold;
+}
+
+nav a:hover {
+     color: #800080 !important; /*Overrides other conflicting CSS rule if any */
+}
+
+#toggle {
+    display: none;
+}
+
+#toggle:checked + .hamburger .top-bun {
+    transform: rotate(45deg) translateY(9px) translateX(6px);
+}
+
+#toggle:checked + .hamburger .bottom-bun {
+    opacity: 0; /* Hide the bottom bun */
+    transform: rotate(-45deg) translateY(-2px) translateX(3px); 
+}
+
+#toggle:checked + .hamburger .meat {
+    transform: rotate(-45deg) translateY(-1px) translateX(-1px); 
+}
+
+#toggle:checked + .hamburger + .nav {
+    top: 0;
+    transform: scale(1); 
+}
+
+/******************************************************************************************************************************/
+/* Highlight Form */
+
+.center-content_home {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px);
+    text-align: center;
+    position: relative;
+}
+
+.highlight_home {
+    background-color: rgba(255, 255, 255, 0.1); 
+    padding: 2px 20px 100px;
+    margin: 50px 500px;
+    margin-top: -100px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+#p {
+    color: #FFF;
+    font-size: 3em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 5px solid #800080;
+    border-radius: 10px;
+}
+
+#tagline {
+    color: #FFF;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.start {
+    min-width: 130px;
+    height: 50px;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    border: none;
+    background: #800080;
+    box-shadow: 0 5px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    margin: 0 auto; /* Center the button */
+}
+
+.start:hover {
+    box-shadow: 0 3px white;
+    top: 0;
+}
+
+.start:active {
+    box-shadow: 0 0 white;
+    top: 5px;
+}
+
+/*************************************************************************/
+/* Waves and Animation */
+.waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px; /* Adjusted height */
+    z-index: 0; /* Ensure waves are behind the content */
+}
+
+.waves_about {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; 
+    z-index: 0; 
+}
+
+.waves_assist{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; 
+    z-index: 0; 
+}
+
+.waves_faq{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; 
+    z-index: 0; 
+}
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+/*********************************************************************/
+/* About Page */
+.highlight_about {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+    padding: 1px 0; /* Added padding at the top and bottom */
+    margin: 15px auto;
+    width: 60%; 
+    max-width: 700px; 
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight_about_header {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.highlight_about_img {
+    width: 250px; 
+    height: 250px;
+    border-radius: 8px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
+.highlight_about_text {
+    flex-grow: 1;
+}
+
+.details_about {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 0;
+}
+
+.highlight_about_contacts {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.highlight_about_email,
+.highlight_about_instagram,
+.highlight_about_facebook {
+    width: 35px; 
+    height: 35px; 
+}
+
+.highlight_about_details {
+    padding: 10px 20px; /* Add padding to create space for details */
+    color: #ffffff;
+    text-align: justify;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 300px; 
+}
+
+/***********************************************************************/
+/* Flashcard Page */
+
+.center-content_flipcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px);
+    text-align: center;
+    position: relative;
+    margin-top: -60px; 
+}
+
+.flashcard {
+    width: 400px;
+    height: 300px;
+    perspective: 700px;
+}
+
+.flashcard-front, .flashcard-back {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.flashcard-front {
+    transform: rotateX(0deg);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    background-color: #800080;
+    color: white;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+.flashcard.flipped .flashcard-front {
+    transform: rotateY(-180deg);
+}
+
+.flashcard.flipped .flashcard-back {
+    transform: rotateY(0deg);
+}
+
+.flashcard h1 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.flashcard p {
+    font-size: 1em;
+}
+
+.navigation-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 320px; 
+}
+
+.nav-button {
+    background-color: #800080;
+    color: white;
+    border: none;
+    padding: 10px 0; /* Ensure consistent vertical padding */
+    width: 100px; /* Ensure buttons are of equal width */
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center; /* Center the text */
+}
+
+.nav-button:hover {
+    background-color: #5a005a;
+}
+
+/********************************************************************************/
+/* Assist Page */
+.center-content_assist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.highlight_assist {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    color: white; 
+    font-family: 'Barlow', sans-serif;
+    overflow-y: auto; /* Make text scrollable */
+    max-height: 70vh; /* Limit height to make scrollable */
+}
+
+.highlight_assist h1, .highlight_assist h2, .highlight_assist p, .highlight_assist ul {
+    margin-bottom: 20px;
+}
+
+.highlight_assist ul {
+    padding-left: 20px;
+}
+
+.highlight_assist ul li {
+    list-style-type: disc;
+}
+
+/**************************************************************************/
+/* FAQs Page */
+
+.center-content_faq {
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 80vh;
+padding: 20px;
+}
+
+.highlight_faq {
+background-color: rgba(255, 255, 255, 0.3);
+box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+padding: 20px;
+border-radius: 10px;
+max-width: 800px;
+color: white; 
+font-family: 'Barlow', sans-serif;
+overflow-y: auto;
+max-height: 70vh; 
+}
+
+.highlight_faq h1, .highlight_faq h2, .highlight_faq p {
+margin-bottom: 20px;
+}
+
+.highlight_faq h2 {
+margin-top: 20px;
+}
+
+/***********************************************************************/
+/* Responsive Styles to adjust to smaller screens*/
+
+@media screen and (max-width: 768px) {
+    .highlight {
+        width: 80%;
+        margin-bottom: 20%;
+    }
+    .flashcard {
+        min-width: none;
+    }
+    .navigation-buttons {
+        min-width: none; 
+    }
+    h1 {
+        font-size: 1.2em;
+    }
+    .waves {
+        min-height: 150px; 
+    }  
+}
+
+@media screen and (max-width: 768px) {
+    .highlight_about {
+        width: 90%; 
+    }
+
+    .highlight_about_header {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align horizontally */
+        text-align: center; /* Center text */
+    }
+
+    .highlight_about_img {
+        margin: 0 0 20px 0; 
+    }
+
+    .details_about {
+        font-size: 1.2em;
+    }
+
+    .highlight_about_contacts {
+        justify-content: center; /* Center the social media icons */
+    }
+
+    .highlight_about_details {
+        padding: 10px; 
+        max-height: 200px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .highlight_about {
+        width: 95%; 
+        min-width: 80%;
+    }
+
+    .highlight_about_img {
+        max-width: 150px;
+        min-width: 70%; 
+    }
+
+    .details_about {
+        font-size: 1.2em;
+    }
+
+    .highlight_about_details {
+        max-height: 150px; 
+    }
+}
+
